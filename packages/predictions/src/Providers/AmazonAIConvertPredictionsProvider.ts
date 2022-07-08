@@ -132,12 +132,12 @@ export class AmazonAIConvertPredictionsProvider extends AbstractConvertPredictio
 			const data = await this.pollyClient.send(synthesizeSpeechCommand);
 			const response = new Response(data.AudioStream as ReadableStream);
 			const arrayBuffer = await response.arrayBuffer();
-			const blob = new Blob([arrayBuffer], {
-				type: data.ContentType,
-			});
-			const url = URL.createObjectURL(blob);
+			// const blob = new Blob([arrayBuffer], {
+			// 	type: data.ContentType,
+			// });
+			// const url = URL.createObjectURL(blob);
 			return {
-				speech: { url },
+				// speech: { url },
 				audioStream: arrayBuffer,
 				text: input.textToSpeech.source.text,
 			} as TextToSpeechOutput;
